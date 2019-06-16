@@ -29,7 +29,7 @@ class ClientFetchingExample extends Component {
   }
 
   render() {
-    const cuisines = this.props.data.cms.cuisines;
+    const { cuisines } = this.props.data.cms;
     const { img, breed } = this.state.pupper
 
     return (
