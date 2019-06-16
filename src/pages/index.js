@@ -16,7 +16,7 @@ export const GatsbyQuery = graphql`
 
 class ClientFetchingExample extends Component {
   state = {
-    loading: false,
+    loading: true,
     error: false,
     pupper: {
       img: '',
@@ -25,14 +25,11 @@ class ClientFetchingExample extends Component {
   }
 
   componentDidMount() {
-    this.fetchRicksPupper()
+    this.fetchPupper()
   }
 
   render() {
-    const {
-      cuisine: { cuisines }
-    } = this.props.data;
-    console.log(this.props);
+    const cuisines = this.props.data.cms.cuisines;
     const { img, breed } = this.state.pupper
 
     return (
@@ -57,7 +54,7 @@ class ClientFetchingExample extends Component {
               <img src={img} alt={`cute random `} style={{ maxWidth: 300 }} />
             </>
           ) : (
-            <p>Oh noes, error fetching pupper :(</p>
+            <p>Błąd wystąpił panie kolego</p>
           )}
         </div>
       </div>
@@ -65,7 +62,7 @@ class ClientFetchingExample extends Component {
   }
 
   // This data is fetched at run time on the client.
-  fetchRicksPupper = () => {
+  fetchPupper = () => {
     this.setState({ loading: true })
 
     axios
